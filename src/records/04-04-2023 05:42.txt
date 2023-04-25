@@ -1,0 +1,3 @@
+Time: 04-04-2023 05:42
+Count of mistakes: 19
+Speed: 154 char/min
