@@ -6,7 +6,10 @@ pygame.init()
 
 
 class KeyboardTrainer:
+    '''Реализация клавиатурного тренажера'''
+
     def __init__(self):
+        '''Инициализация полей'''
         pygame.display.set_caption('Keyboard Trainer')
         self.screen = pygame.display.set_mode((c.WIDTH, c.HEIGHT))
         self.timer = pygame.time.get_ticks()
@@ -23,11 +26,13 @@ class KeyboardTrainer:
                     self.dictionary.append(word)
 
     def start(self):
+        '''Начальный экран'''
         self.screen.blit(c.STANDART_FONT.render(
             'Go!', True, c.BLACK), c.START_POS)
         self.starting.create_button(self.screen, *c.BUTTON_POS, *c.BUTTON_SIZE)
 
     def write(self):
+        '''Экран тренировки'''
         if self.is_finished():
             temp = ''
         else:
@@ -42,6 +47,7 @@ class KeyboardTrainer:
             self.state = self.state.change_state(self)
 
     def stats(self):
+        '''Экран статистики'''
         self.screen.blit(c.STAT_FONT.render(
             'Statistics', True, c.BLACK), c.STAT_POS)
         self.screen.blit(c.INFO_FONT.render(
@@ -52,9 +58,11 @@ class KeyboardTrainer:
             self.screen, *c.STAT_BUTTON_POS, *c.BUTTON_SIZE)
 
     def is_finished(self):
+        '''Фиксация концовки печатания'''
         return self.index >= len(self.dictionary)
 
     def event_loop(self):
+        '''Процесс игры'''
         running = True
         while running:
             pygame.time.Clock().tick(c.FPS)
