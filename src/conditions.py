@@ -5,7 +5,10 @@ pygame.init()
 
 
 class Start:
+    '''Начальная позиция'''
+
     def change_state(self, user):
+        '''Начало тренировки'''
         user.timer = pygame.time.get_ticks()
         user.word = ''
         user.printed = 0
@@ -14,7 +17,10 @@ class Start:
 
 
 class Write:
+    '''Состояние печатания'''
+
     def change_state(self, user):
+        '''Возвращение статистики'''
         time = datetime.datetime.now().strftime('%d-%m-%Y %H:%M')
         with open(f'records/{time}.txt', 'w+') as res:
             res.write(f'Time: {time}\n'
@@ -24,7 +30,10 @@ class Write:
 
 
 class Stats:
+    '''Состояние статистики'''
+
     def change_state(self, user):
+        '''Начало тренировки'''
         user.timer = pygame.time.get_ticks()
         user.word = ''
         user.printed = 0
